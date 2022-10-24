@@ -1,0 +1,71 @@
+<nav class="navbar navbar-dark bg-dark">
+  <h1 class="text-light ms-4">Sean Talley - Dynatron Tech Demo</h1>
+</nav>
+<div class="container-fluid">
+  <div class="w-100">
+    <h1 class="ms-2 mt-1">Client List - Click on a Client to Select</h1>
+    <h3 class="ms-2">Selected Client: <b style="color:rgb(10,150,10)">{{ getSelectedClient() }}</b></h3>
+  </div>
+  <div class="demo-fit">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email Address</th>
+          <th scope="col">Date Created</th>
+          <th scope="col">Last Updated</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients" [class]="client._selected ? 'selected' : ''" (click)="selectClient(client)">
+          <td scope="row">{{client.id}}</td>
+          <td>{{client.firstName}}</td>
+          <td>{{client.lastName}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.created | date: 'short' }}</td>
+          <td>{{client.lastUpdated | date: 'short' }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editClient(client,$event)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-sm ms-2" (click)="deleteClient(client,$event)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-success mt-3" (click)="openAddClientModal(addClientModal)">
+      <i class="fas fa-plus"></i>Add Client
+    </button>
+</div>
+<ng-template #addClientModal let-modal>
+  <div class="modal-header bg-dark">
+    <h4 class="modal-title text-light" id="add-client-modal">Add/Edit Client</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" (change)="fnChange($event)" [value]="editClientInfo.firstName" autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" (change)="lnChange($event)" [value]="editClientInfo.lastName" autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" (change)="emailChange($event)" [value]="editClientInfo.email" autocomplete="off">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="modal.close('save')">Save Client</button>
+  </div>
+</ng-template>
