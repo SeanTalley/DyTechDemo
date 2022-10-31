@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 namespace DemoAPI.Hubs;
 public class ClientHub : Hub
 {
-    private static volatile int ClientCount = 0;
+    private static int ClientCount = 0;
     private static Dictionary<string,UserInfo> ClientList = new Dictionary<string, UserInfo>();
     public async override Task OnConnectedAsync()
     {
@@ -14,7 +14,7 @@ public class ClientHub : Hub
         // Send the list of users to the new client
         await Clients.Client(Context.ConnectionId).SendAsync("UserList", ClientList.Values.Where(x => x.UserName != $"User {clientId}"));
         // Send the new user to all other clients
-        await Clients.AllExcept(Context.ConnectionId).SendAsync("UserJoined", ClientList.Last().Value);
+        await Clients.AllExcept(Context.ConnectionId).SendAsync("UserJoined", ClientList[Context.ConnectionId]);
         await base.OnConnectedAsync();
     }
     public async override Task OnDisconnectedAsync(Exception? exception)

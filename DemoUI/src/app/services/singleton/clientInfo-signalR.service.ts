@@ -34,7 +34,6 @@ export class ClientInfoSignalRService {
                     this.hubUserName = userName;
                 });
                 this.hubConnection.on("UserList",(userList: UserInfo[]) => {
-                    console.log(userList, "Received user list");
                     this.hubUserList = userList;
                     this.hubUserSubject$.next(this.hubUserList);
                 });

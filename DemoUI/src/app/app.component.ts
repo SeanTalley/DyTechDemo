@@ -20,18 +20,14 @@ export class AppComponent {
   public editClientInfo!: ClientInfo;
   public userList: any[] = [];
 
-  public window!: any;
-
   public throttleTime: number = 50;  //We will only send the last mousemove event every {throttleTime} milliseconds
-  public throttleHelper!: any;
+  public throttleHelper!: any;       //keep track of the last mousemove events
 
   @ViewChild('addClientModal') addClientModal!: ElementRef;
 
   @HostListener('mousemove', ['$event'])
   onMousemove(event: MouseEvent) {
-    var pos = { x: event.pageX, y: event.pageY };
-    console.log(pos);
-    this.throttleHelper = pos;
+    this.throttleHelper = { x: event.pageX, y: event.pageY };
   }
 
   constructor(private clientInfoService: ClientInfoService, 
