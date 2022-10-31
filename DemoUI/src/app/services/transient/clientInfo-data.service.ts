@@ -12,18 +12,18 @@ export class ClientInfoDataService {
     constructor(private http: HttpClient) { }
 
     public getAllClientInfo(): Observable<ClientInfo[]> {
-        return this.http.get<ClientInfo[]>(`${environment.apiRoot}/ClientInfo`);
+        return this.http.get<ClientInfo[]>(`${environment.apiRoot}/Client`);
     }
     public getClientInfo(id: number): Observable<ClientInfo> {
-        return this.http.get<ClientInfo>(`${environment.apiRoot}/ClientInfo/${id}`);
+        return this.http.get<ClientInfo>(`${environment.apiRoot}/Client/${id}`);
     }
     public createClientInfo(clientInfo: ClientInfo): Observable<ClientInfo> {
-        return this.http.post<ClientInfo>(`${environment.apiRoot}/ClientInfo`, clientInfo);
+        return this.http.post<ClientInfo>(`${environment.apiRoot}/Client`, clientInfo);
     }
     public updateClientInfo(clientInfo: ClientInfo): Observable<ClientInfo> {
-        return this.http.put<ClientInfo>(`${environment.apiRoot}/ClientInfo/${clientInfo.id}`, clientInfo);
+        return this.http.put<ClientInfo>(`${environment.apiRoot}/Client/${clientInfo.id}`, clientInfo);
     }
     public deleteClientInfo(id: number): Observable<ClientInfo> {
-        return this.http.delete<ClientInfo>(`${environment.apiRoot}/ClientInfo/${id}`);
+        return this.http.delete<ClientInfo>(`${environment.apiRoot}/Client/${id}`);
     }
 }

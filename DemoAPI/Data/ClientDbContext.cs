@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoAPI.Data;
-class ClientDb : DbContext
+public class ClientDb : DbContext
 {
     public ClientDb(DbContextOptions<ClientDb> options)
         : base(options) { 

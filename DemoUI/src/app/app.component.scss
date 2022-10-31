@@ -1,6 +1,6 @@
 .demo-fit {
-    overflow-y:scroll;
-    height: calc(100vh - 240px);
+    /*overflow-y:scroll;
+    height: calc(100vh - 240px);*/
     padding-left: 8px;
     padding-right: 8px;
     margin-top:8px;
@@ -27,4 +27,9 @@ tbody > tr {
 }
 tbody > tr.selected {
     background-color: rgb(161, 255, 161);
+}
+.user-cursor {
+    position: fixed;
+    font-weight: bold;
+    color: rgb(48, 194, 48);
 }

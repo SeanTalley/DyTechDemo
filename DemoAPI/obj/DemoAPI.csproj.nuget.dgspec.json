@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tyrael\\Documents\\DynatronTechDemo\\DemoAPI\\DemoAPI.csproj": {}
+    "C:\\Users\\Tyrael\\Documents\\plz\\DemoAPI\\DemoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tyrael\\Documents\\DynatronTechDemo\\DemoAPI\\DemoAPI.csproj": {
+    "C:\\Users\\Tyrael\\Documents\\plz\\DemoAPI\\DemoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tyrael\\Documents\\DynatronTechDemo\\DemoAPI\\DemoAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tyrael\\Documents\\plz\\DemoAPI\\DemoAPI.csproj",
         "projectName": "DemoAPI",
-        "projectPath": "C:\\Users\\Tyrael\\Documents\\DynatronTechDemo\\DemoAPI\\DemoAPI.csproj",
+        "projectPath": "C:\\Users\\Tyrael\\Documents\\plz\\DemoAPI\\DemoAPI.csproj",
         "packagesPath": "C:\\Users\\Tyrael\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tyrael\\Documents\\DynatronTechDemo\\DemoAPI\\obj\\",
+        "outputPath": "C:\\Users\\Tyrael\\Documents\\plz\\DemoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,6 +45,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNet.SignalR.Core": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.10, )"
@@ -58,6 +62,10 @@
               "version": "[6.0.10, )"
             },
             "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[6.4.0, )"
             }

@@ -28,10 +28,10 @@
           <td>{{client.created | date: 'short' }}</td>
           <td>{{client.lastUpdated | date: 'short' }}</td>
           <td>
-            <button class="btn btn-primary btn-sm" (click)="editClient(client,$event)">
+            <button class="btn {{ client._isBeingEdited ? 'btn-warning' : 'btn-primary' }} btn-sm" (click)="editClient(client,$event)">
               <i class="fas fa-edit"></i>
             </button>
-            <button class="btn btn-danger btn-sm ms-2" (click)="deleteClient(client,$event)">
+            <button class="btn btn-danger btn-sm ms-2" [disabled]="client._isBeingEdited" (click)="deleteClient(client,$event)">
               <i class="fas fa-trash"></i>
             </button>
           </td>
@@ -39,10 +39,13 @@
       </tbody>
     </table>
   </div>
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-success mt-3" (click)="openAddClientModal(addClientModal)">
+  <div class="d-flex justify-content-end pb-4 pe-2">
+    <button class="btn btn-success" (click)="openAddClientModal(addClientModal)">
       <i class="fas fa-plus"></i>Add Client
     </button>
+</div>
+<div *ngFor="let user of userList" class="user-cursor" [style]="positionUserDiv(user)">
+  <i class="fas fa-mouse-pointer"></i> {{user.userName}}
 </div>
 <ng-template #addClientModal let-modal>
   <div class="modal-header bg-dark">
