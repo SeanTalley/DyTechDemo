@@ -16,6 +16,7 @@ export class ClientInfoSignalRService {
     public hubUserName: string | null = null;
     public hubUserList: UserInfo[] = [];
     public hubUserSubject$: BehaviorSubject<UserInfo[]>;
+    public lastMouseEvent: any = null;
 
     constructor(private clientInfoService: ClientInfoService, private alertifyService: AlertifyService) {
         this.hubUserSubject$ = new BehaviorSubject<UserInfo[]>(this.hubUserList);
@@ -81,8 +82,13 @@ export class ClientInfoSignalRService {
     }
 
     public sendMouseEvent(event: any) {
-        if(this.hubConnection.connectionId)
-            this.hubConnection.invoke("MouseMove", event.x, event.y);
+        if(this.hubConnection.connectionId) {
+            //Only send event if the mouse has moved
+            if(this.lastMouseEvent == null || this.lastMouseEvent.x != event.x || this.lastMouseEvent.y != event.y) {
+                this.lastMouseEvent = event;
+                this.hubConnection.invoke("MouseMove", event.x, event.y);
+            }
+        }
     }
 
     public sendStartEditing(clientInfo: ClientInfo) {

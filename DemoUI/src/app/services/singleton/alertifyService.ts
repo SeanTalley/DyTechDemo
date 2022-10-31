@@ -11,7 +11,6 @@ export class AlertifyService {
             if (e) { okCallBack() } else { }
         });
     }
-
     success(message: string) {
         alertify.success(message).dismissOthers();
     }
